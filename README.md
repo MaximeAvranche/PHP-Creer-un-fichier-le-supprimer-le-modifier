@@ -7,7 +7,7 @@ Bien-sûr, ce code peut être amélioré avec notamment la création d'une fonct
 
 Libre à vous de l'utiliser pour vos projets. Ce code est très utile si vous partagez de l'actualité par exemple. L'URL ne sera pas définie avec l'id (exemple de possibilité là aussi). Vous créerez en effet une page réservée à cet article qui contiendra le contenu rédigé dans le formulaire et ayant comme URL le même nom que l'article (sans les accents). 
 
-J'espère avoir bien commenté mon code & qu'il vous sera utilisé. 
+J'espère avoir bien commenté mon code & qu'il vous sera utile. 
 Bon code à tous !
 
 # Liens utiles
