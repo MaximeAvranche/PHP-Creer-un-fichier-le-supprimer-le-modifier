@@ -3,7 +3,7 @@
  *
  * >> Ce code vous est proposé par Maxime Avranche <<
  * >> https://www.prestarvor.com/ <<
- * >>> Lien GitHub : https://github.com/MaximeAvranche/PHP-Creer-un-fichier/ 
+ * >>> Lien GitHub : https://github.com/MaximeAvranche/PHP-Creer-un-fichier-et-en-supprimer-en-fonction-d-une-extension 
  * 
 **/
 /** CREATION D'UN FICHIER PHP & ECRITURE **/
@@ -19,49 +19,58 @@
     	
     	// Autres variables
     	$title = $_POST['titre'];	// Titre de la page qui servira d'URL (comme WordPress le fait par exemple)
-    	$contenu = $_POST['content'];	// Variable texte qu'on affichera dans le fichier créé
+    	$contenu = nl2br($_POST['content']);	// Variable texte qu'on affichera dans le fichier créé - nl2br permet de garder les espaces et retours à la ligne
 
-    	// Contenu du fichier en cours d'édition
-    	$content = '
-    	<!DOCTYPE html>
-			<html>
-			<head>
-			    <meta charset="utf-8">
-			    <title>Test</title>
-			</head>
-			<body>
-				<center><strong>'.$contenu.'</strong></center>
-			</body>
-			</html>
-    	';
+    		// On vérifie le fichier existe sur le répertoire de notre serveur.
+	    	if (file_exists($nameFile) == true) {
+	    		echo "<center><FONT color='red'>Le fichier <strong><em>".$nameFile."</em></strong> existe déjà. Vous ne pouvez pas le recréer.</FONT></center>";
+	    	}
+	    	// Si le fichier n'existe pas on le créé
+	    	else {
+		    	// Contenu du fichier en cours d'édition
+		    	$content = '
+		    	<!DOCTYPE html>
+					<html>
+					<head>
+					    <meta charset="utf-8">
+					    <title>Test</title>
+					</head>
+					<body>
+						<center><strong>'.$contenu.'</strong></center>
+					</body>
+					</html>
+		    	';
 
-    	// Création du fichier
-    	$newFile = fopen($nameFile, "x+");
-    	// Ecriture dans le fichier
-    	fputs($newFile, $content);
-    	// Fermeture de l'édition du fichier
-    	fclose($newFile);   
-    	// Une fois le fichier créé, on affiche un message de succès
-		echo 'Le fichier '.$nameFile.' vient d\'être créé avec succès <br /><a href="index.php">Recharger la page</a>';
+		    	// Création du fichier
+		    	$newFile = fopen($nameFile, "x+");
+		    	// Ecriture dans le fichier
+		    	fputs($newFile, $content);
+		    	// Fermeture de l'édition du fichier
+		    	fclose($newFile);   
+		    	// Une fois le fichier créé, on affiche un message de succès
+				echo '<center><FONT color="gree">Le fichier <strong>'.$nameFile.'</strong> vient d\'être créé avec succès <br /><a href="index.php">Recharger la page</a></FONT></center>';
+		    }
     }
     else {
-    	echo "Une erreur est survenue.";
+    	echo "Merci de remplir tous les champs.";
     }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Test</title>
+    <title>Créer un fichier</title>
 </head>
 <body>
+	<h3>Cette page permet de créer un fichier en .php</h3>
 	<form method="POST">
-		<legend>Titre</legend>
-		<input type="text" name="titre">
+		<legend>Titre de la page</legend>
+		<input type="text" name="titre" required="">
 		<legend>Contenu</legend>
-		<textarea name="content"></textarea>
+		<textarea name="content" required=""></textarea>
 		<br /><br />
 		<input type="submit" name="send">
 	</form>
+	<center><a href="supprimer.php">Je veux supprimer un fichier</a></center>
 </body>
 </html>
