@@ -3,7 +3,7 @@
  *
  * >> Ce code vous est proposé par Maxime Avranche <<
  * >> https://www.prestarvor.com/ <<
- * >>> Lien GitHub : https://github.com/MaximeAvranche/PHP-Creer-un-fichier-et-en-supprimer-en-fonction-d-une-extension
+ * >>> Lien GitHub : https://github.com/MaximeAvranche/PHP-Creer-un-fichier-le-supprimer-le-modifier
  * 
 **/
 /** SUPPRESSION D'UN FICHIER DANS UN REPERTOIRE DEFINI **/
